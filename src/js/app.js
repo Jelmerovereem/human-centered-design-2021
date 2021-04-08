@@ -75,6 +75,7 @@ const render = (data) => {
 		.append("text")
 		.attr("y", 6)
 		.attr("dy", "0.71em")
+		.attr("font-size", "20px")
 		.attr("text-anchor", "end")
 		.text("value");
 
@@ -90,6 +91,8 @@ const render = (data) => {
 		.enter().append("rect")
 		.attr("x", obj => xScale(xValue(obj)))
 		.attr("y", obj => yScale(yValue(obj)))
+		.attr("aria-label", obj => `${obj.city}: ${obj.population}`)
+		.attr("title", obj => `${obj.city}: ${obj.population}`)
 		.attr("width", xScale.bandwidth())
 		.attr("height", obj => innerHeight - yScale(yValue(obj)))
 		.attr("fill", obj => obj.color);
