@@ -1,4 +1,4 @@
-const chartjsContainer = document.querySelector(".barChart.chartjs");
+/*const chartjsContainer = document.querySelector(".barChart.chartjs");
 const chartjsCanvas = chartjsContainer.querySelector("canvas");
 const barColors = ['#F81B1B','#15ADF5','#03D216'];
 const chartjsBarChart = new Chart(chartjsCanvas, {
@@ -14,7 +14,7 @@ const chartjsBarChart = new Chart(chartjsCanvas, {
 		}]
 	}
 });
-
+*/
 
 const d3jsContainer = document.querySelector(".barChart.d3js");
 const d3jsData = [{
