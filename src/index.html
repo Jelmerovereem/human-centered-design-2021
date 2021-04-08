@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Chart test</title>
+	<link rel="stylesheet" href="css/style.css">
 	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.bundle.js"></script>
 	<script src="https://d3js.org/d3.v6.min.js"></script>
@@ -12,12 +13,37 @@
 <body>
 	<a href="https://hcd.jchm.dev/tests/test1/">Terug naar tests</a>
 	<main>
+		<h1>Populatie van verschillende steden</h1>
 		<article>
 			<section style="width: 45%;" class="barChart chartjs">
-				<canvas></canvas>
+				<canvas aria-label="Steden populatie bar chart" role="graphics-document">
+					<table>
+						<caption> Wat is de populatie van deze steden? </caption>
+						<thead>
+							<tr>
+								<th scope="col">Stad</th>
+								<th scope="col">Populatie</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr scope="row" tabindex="0">
+								<td>Amsterdam</td>
+								<td>2000000</td>
+							</tr>
+							<tr scope="row" tabindex="0">
+								<td>Leiden</td>
+								<td>900000</td>
+							</tr>
+							<tr scope="row" tabindex="0">
+								<td>Utrecht</td>
+								<td>120000</td>
+							</tr>
+						</tbody>
+					</table>
+				</canvas>
 			</section>
 			<section class="barChart d3js">
-				<svg width="960" height="500"></svg>
+				<svg width="960" height="500" aria-label="Steden populatie bar chart" role="img"></svg>
 			</section>
 		</article>
 	</main>
