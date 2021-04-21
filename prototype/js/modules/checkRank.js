@@ -36,7 +36,23 @@ export default function checkRank(rank) {
 			]
 			break;
 		case "chooseBook":
-			rankObj.answers = [];
+			rankObj.answers = [
+				{
+					text: "opgeslagen",
+					key: "Enter",
+					next: savedBooks
+				},
+				{
+					text: "actie",
+					key: "Digit1",
+					next: books
+				},
+				{
+					text: "sport",
+					key: "Digit2",
+					next: books
+				}
+				];
 			break;
 		default:
 			console.log("niks opgevangen")
