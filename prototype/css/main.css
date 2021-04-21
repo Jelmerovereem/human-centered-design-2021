@@ -7,19 +7,19 @@ body {
 }
 
 .playing {
-	background: blue;
+	background: #03036b; /* blue */
 }
 
 .recording {
-	background: green;
+	background: #124a04; /* green */
 }
 
 .silent {
-	background: purple;
+	background: #420363; /* Purple */
 }
 
 .error {
-	background: red;
+	background: #630303; /* red */
 }
 
 .backBtn {
@@ -30,13 +30,25 @@ body {
 }
 
 .backBtn:hover {
-	background: grey;
-	color: lightgrey;
+	background: #adadad;
+	//color: lightgrey;
 }
 
-.startKey {
+.choices {
+/*	display: flex;
+	justify-content: center;*/
+	text-align: center;
+}
+
+.key {
 	color: grey;
 	background: lightgrey;
 	padding: 0 10px;
-	box-shadow: 0px 2px 0px grey;
+	box-shadow: 0px 5px 0px grey;
+	transition: box-shadow .3s;
+	cursor: pointer;
+}
+
+.key:hover {
+	box-shadow: none;
 }

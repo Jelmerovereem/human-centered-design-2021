@@ -1,18 +1,33 @@
 import startRecording from "./startRecording.js";
 import checkRank from "./checkRank.js";
+import showChoiceKeys from "./showChoiceKeys.js";
+
+function goRecord(rankObj) {
+	document.body.classList.remove("playing");
+	setTimeout(() => {
+		startRecording(rankObj);
+	}, 300)
+}
 
 export default function playAudioFile(audioEl) {
 	document.body.classList.remove("error", "recording");
 	document.body.classList.add("playing");
 	const rankObj = checkRank(audioEl.dataset.rank);
+	document.onkeyup = (event) => {
+		if (event.code === "KeyT") {
+			audioEl.pause();
+			audioEl.currentTime = 0;
+			//startRecording(rankObj);
+		}
+	}
 	audioEl.play();
-	console.log(`playing ${audioEl.dataset.rank}...`)
+	showChoiceKeys(rankObj);
 	audioEl.onended = () => {
-		console.log(`${audioEl.dataset.rank} stopped playing...`)
-		document.body.classList.remove("playing");
-		setTimeout(() => {
-			console.log(`recording answer for ${audioEl.dataset.rank}`)
-			startRecording(rankObj);
-		}, 300)
+		console.log("audio ended a seh")
+		startRecording(rankObj);
+	}
+	audioEl.onpause = () => {
+		console.log("audio paused a seh")
+		startRecording(rankObj)
 	}
 }
