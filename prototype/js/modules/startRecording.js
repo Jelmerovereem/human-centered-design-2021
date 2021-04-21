@@ -1,4 +1,4 @@
-import { intro, tutorial, chooseBook } from "./utils/audioFiles.js";
+import { intro, tutorial, chooseBook, savedBooks, books } from "./utils/audioFiles.js";
 import playAudioFile from "./playAudioFile.js";
 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
@@ -13,21 +13,29 @@ const feedbackEl = document.querySelector(".feedback");
 function checkKey(event, rankObj) {
 	if (event.code === "Enter") {
 		console.log("pressed on enter");
-		const enterIndex = rankObj.answers.findIndex(obj => obj.key === "Enter");
-		playAudioFile(rankObj.answers[enterIndex].next)
+		const index = rankObj.answers.findIndex(obj => obj.key === "Enter");
+		feedbackEl.textContent = rankObj.answers[index].text;
+		playAudioFile(rankObj.answers[index].next)
 	}
 	if (event.code === "Space") {
 		console.log("pressed on space")
-		const spaceIndex = rankObj.answers.findIndex(obj => obj.key === "Space");
-		playAudioFile(rankObj.answers[spaceIndex].next);
+		const index = rankObj.answers.findIndex(obj => obj.key === "Space");
+		feedbackEl.textContent = rankObj.answers[index].text;
+		playAudioFile(rankObj.answers[index].next);
 	}
 	if (event.code === "Digit1") {
-		const enterIndex = rankObj.answers.findIndex(obj => obj.key === "Digit1");
-		playAudioFile(rankObj.answers[enterIndex].next)
+		const index = rankObj.answers.findIndex(obj => obj.key === "Digit1");
+		feedbackEl.textContent = rankObj.answers[index].text;
+		playAudioFile(rankObj.answers[index].next)
 	}
 	if (event.code === "Digit2") {
-		const enterIndex = rankObj.answers.findIndex(obj => obj.key === "Digit2");
-		playAudioFile(rankObj.answers[enterIndex].next)
+		const index = rankObj.answers.findIndex(obj => obj.key === "Digit2");
+		feedbackEl.textContent = rankObj.answers[index].text;
+		playAudioFile(rankObj.answers[index].next)
+	}
+	if (event.code === "KeyR") {
+		
+		playAudioFile(rankObj.element);
 	}
 }
 
@@ -52,6 +60,7 @@ export default function startRecording(rankObj) {
 
 	recognition.start();
 	recognition.addEventListener("audiostart", () => {
+		document.body.classList.remove("error", "playing");
 		document.body.classList.add("recording");
 	});
 	recognition.addEventListener("audioend", (event) => {
@@ -61,10 +70,10 @@ export default function startRecording(rankObj) {
 	})
 
 	function checkAnswer(resultText) {
-		console.log(resultText);
+		//console.log(resultText);
 		for (var index = 0; index < rankObj.answers.length; index++) {
 			if (rankObj.answers[index].text === resultText) {
-				//console.log(rankObj.answers[index]);
+				console.log(resultText);
 				recognition.stop();
 				playAudioFile(rankObj.answers[index].next);
 				break;
@@ -81,10 +90,11 @@ export default function startRecording(rankObj) {
 		for (const result in event.results) {
 			if (!isNaN(result)) {
 				let resultText = event.results[result][0].transcript.toLowerCase();
-				checkAnswer(resultText);
+				feedbackEl.textContent = event.results[result][0].transcript;
 				allFeedback += `${event.results[result][0].transcript}.<br>`;
+				checkAnswer(resultText);
 			}
 		}
-		feedbackEl.innerHTML = allFeedback;
+		//feedbackEl.innerHTML = allFeedback;
 	})
 }
