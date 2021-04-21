@@ -4,19 +4,18 @@ export default function checkRank(rank) {
 	let rankObj = {};
 	switch(rank) {
 		case "intro":
-			rankObj.previous = intro;
-			rankObj.choseTrue = tutorial;
-			rankObj.choseFalse = chooseBook;
 			rankObj.answers = [ // vraag of hij tutorial wilt horen
 				{
-					text: "ja",
+					text: "uitleg",
 					key: "Enter",
-					next: tutorial
+					next: tutorial,
+					parent: "intro"
 				},
 				{
 					text: "boek kiezen",
 					key: "Space",
-					next: chooseBook
+					next: chooseBook,
+					parent: "intro"
 				}
 			];
 			break;
@@ -25,12 +24,14 @@ export default function checkRank(rank) {
 				{
 					text: "boek kiezen",
 					key: "Enter",
-					next: chooseBook
+					next: chooseBook,
+					parent: "tutorial"
 				},
 				{
 					text: "uitleg",
 					key: "Space",
-					next: tutorial
+					next: tutorial,
+					parent: "tutorial"
 				}
 			]
 			break;

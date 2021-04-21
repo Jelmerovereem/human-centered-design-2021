@@ -2,6 +2,7 @@ body {
 	background: #282828;
 	color: lightgrey;
 	font-family: poppins;
+	transition: background .5s ease;
 }
 
 .playing {
@@ -18,4 +19,23 @@ body {
 
 .error {
 	background: red;
+}
+
+.backBtn {
+	text-decoration: none;
+	background: lightgrey;
+	color: grey;
+	padding: 10px 20px;
+}
+
+.backBtn:hover {
+	background: grey;
+	color: lightgrey;
+}
+
+.startKey {
+	color: grey;
+	background: lightgrey;
+	padding: 0 10px;
+	box-shadow: 0px 2px 0px grey;
 }
