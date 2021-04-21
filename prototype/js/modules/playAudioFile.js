@@ -2,22 +2,17 @@ import startRecording from "./startRecording.js";
 import checkRank from "./checkRank.js";
 
 export default function playAudioFile(audioEl) {
+	document.body.classList.remove("error", "recording");
 	document.body.classList.add("playing");
-	console.log(audioEl);
 	const rankObj = checkRank(audioEl.dataset.rank);
 	audioEl.play();
+	console.log(`playing ${audioEl.dataset.rank}...`)
 	audioEl.onended = () => {
-		console.log("audio ended")
+		console.log(`${audioEl.dataset.rank} stopped playing...`)
 		document.body.classList.remove("playing");
 		setTimeout(() => {
+			console.log(`recording answer for ${audioEl.dataset.rank}`)
 			startRecording(rankObj);
 		}, 300)
 	}
-	audioEl.addEventListener("ended", () => {
-		console.log("audio ended")
-		document.body.classList.remove("playing");
-		setTimeout(() => {
-			startRecording(rankObj);
-		}, 300)
-	})
 }

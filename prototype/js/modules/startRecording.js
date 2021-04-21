@@ -10,8 +10,21 @@ const grammarTest = `#JSGF V1.0; grammar test; public <word> = ${words.join("|")
 
 const feedbackEl = document.querySelector(".feedback");
 
+function checkKey(event, rankObj) {
+	if (event.code === "Enter") {
+		console.log("pressed on enter");
+		const enterIndex = rankObj.answers.findIndex(obj => obj.key === "Enter");
+		playAudioFile(rankObj.answers[enterIndex].next)
+	}
+	if (event.code === "Space") {
+		console.log("pressed on space")
+		const spaceIndex = rankObj.answers.findIndex(obj => obj.key === "Space");
+		playAudioFile(rankObj.answers[spaceIndex].next);
+	}
+}
+
 export default function startRecording(rankObj) {
-	const recognition  = new SpeechRecognition();
+	const recognition = new SpeechRecognition();
 	const speechRecognitionList = new SpeechGrammarList();
 	speechRecognitionList.addFromString(grammarTest, 1);
 	recognition.continuous = false;
@@ -19,29 +32,36 @@ export default function startRecording(rankObj) {
 	recognition.interimResults = false;
 	recognition.maxAlternatives = 1;
 
-	const audioEl = document.createElement("audio");
-	audioEl.src = "assets/recording.wav";
-	audioEl.play();
+	const bodyElement = document.querySelector("body");
+	bodyElement.onkeyup = (event) => {
+		recognition.stop();
+		checkKey(event, rankObj);
+	}
 
-	//let resultText;
+	const notification = document.createElement("audio");
+	notification.src = "assets/recording.wav";
+	notification.play();
 
 	recognition.start();
 	recognition.addEventListener("audiostart", () => {
 		document.body.classList.add("recording");
 	});
 	recognition.addEventListener("audioend", (event) => {
-		console.log("clicked on stop")
+		//console.log("recognition stopped")
 		document.body.classList.remove("recording");
 		recognition.stop();
 	})
 
 	function checkAnswer(resultText) {
+		console.log(resultText);
 		for (var index = 0; index < rankObj.answers.length; index++) {
 			if (rankObj.answers[index].text === resultText) {
-				console.log(rankObj.answers[index]);
+				//console.log(rankObj.answers[index]);
+				recognition.stop();
 				playAudioFile(rankObj.answers[index].next);
 				break;
 			} else {
+				recognition.stop();
 				document.body.classList.add("error");
 				console.log("resultText komt niet overeen met answer");
 			}
@@ -58,20 +78,5 @@ export default function startRecording(rankObj) {
 			}
 		}
 		feedbackEl.innerHTML = allFeedback;
-	})
-
-
-
-	document.body.addEventListener("keyup", (event) => {
-		if (event.code === "Enter") {
-			recognition.stop();
-			const enterIndex = rankObj.answers.findIndex(obj => obj.key === "Enter");
-			playAudioFile(rankObj.answers[enterIndex].next)
-		}
-		if (event.code === "Space") {
-			recognition.stop();
-			const spaceIndex = rankObj.answers.findIndex(obj => obj.key === "Space");
-			playAudioFile(rankObj.answers[spaceIndex].next);
-		}
 	})
 }
