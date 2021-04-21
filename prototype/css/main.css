@@ -1,0 +1,21 @@
+body {
+	background: #282828;
+	color: lightgrey;
+	font-family: poppins;
+}
+
+.playing {
+	background: blue;
+}
+
+.recording {
+	background: green;
+}
+
+.silent {
+	background: purple;
+}
+
+.error {
+	background: red;
+}
