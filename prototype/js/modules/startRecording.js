@@ -21,6 +21,14 @@ function checkKey(event, rankObj) {
 		const spaceIndex = rankObj.answers.findIndex(obj => obj.key === "Space");
 		playAudioFile(rankObj.answers[spaceIndex].next);
 	}
+	if (event.code === "Digit1") {
+		const enterIndex = rankObj.answers.findIndex(obj => obj.key === "Digit1");
+		playAudioFile(rankObj.answers[enterIndex].next)
+	}
+	if (event.code === "Digit2") {
+		const enterIndex = rankObj.answers.findIndex(obj => obj.key === "Digit2");
+		playAudioFile(rankObj.answers[enterIndex].next)
+	}
 }
 
 export default function startRecording(rankObj) {

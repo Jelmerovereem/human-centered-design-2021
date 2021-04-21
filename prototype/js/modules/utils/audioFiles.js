@@ -10,4 +10,8 @@ const chooseBook = document.createElement("audio");
 chooseBook.src = "assets/chooseBook.mp3";
 chooseBook.dataset.rank = "chooseBook";
 
+/*const savedBooks;
+
+const books;*/
+
 export { intro, tutorial, chooseBook };

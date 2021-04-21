@@ -7,3 +7,7 @@ document.body.addEventListener("keyup", (e) => {
 		playAudioFile(intro);
 	}
 })
+
+document.querySelector(".startKey").addEventListener("click", () => {
+	playAudioFile(intro);
+})
