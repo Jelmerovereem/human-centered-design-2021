@@ -1,4 +1,4 @@
-import { intro, tutorial, chooseBook, savedBooks, books } from "./utils/audioFiles.js";
+import { intro, tutorial, chooseBook, savedBooks, books, ooggetuige, finishedBook } from "./utils/audioFiles.js";
 console.log(savedBooks)
 export default function checkRank(rank) {
 	let rankObj = {};
@@ -63,6 +63,50 @@ export default function checkRank(rank) {
 					next: books
 				}
 				];
+			break;
+		case "savedBooks":
+			rankObj.element = savedBooks;
+			rankObj.answers = [
+				{
+					text: "de ooggetuige",
+					key: "Digit1",
+					keyText: "1",
+					next: ooggetuige
+				}
+				];
+			break;
+		case "books":
+			rankObj.element = books;
+			rankObj.answers = [
+				{
+					text: "de ooggetuige",
+					key: "Digit1",
+					keyText: "1",
+					next: ooggetuige
+				}
+				];
+			break;
+		case "ooggetuige":
+			rankObj.element = ooggetuige;
+			rankObj.answers = [
+				{
+					text: "stop",
+					key: "Space",
+					keyText: "Spatie",
+					next: finishedBook	
+				}
+				]
+			break;
+		case "finishedBook":
+			rankObj.element = finishedBook;
+			rankObj.answers = [
+				{
+					text: "Klaar",
+					key: "Enter",
+					keyText: "Enter",
+					next: chooseBook
+				}
+			];
 			break;
 		default:
 			console.log("niks opgevangen")

@@ -1,4 +1,4 @@
-import { intro, tutorial, chooseBook, savedBooks, books } from "./utils/audioFiles.js";
+import { intro, tutorial, chooseBook, savedBooks, books, ooggetuige, finishedBook } from "./utils/audioFiles.js";
 import playAudioFile from "./playAudioFile.js";
 
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;

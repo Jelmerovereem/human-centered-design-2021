@@ -11,11 +11,19 @@ chooseBook.src = "assets/chooseBook.mp3";
 chooseBook.dataset.rank = "chooseBook";
 
 const savedBooks = document.createElement("audio");
-savedBooks.src = "assets/short_intro.m4a";
+savedBooks.src = "assets/savedBooks.mp3";
 savedBooks.dataset.rank = "savedBooks";
 
 const books = document.createElement("audio");
-books.src = "assets/short_intro.m4a";
+books.src = "assets/books.mp3";
 books.dataset.rank = "books";
 
-export { intro, tutorial, chooseBook, savedBooks, books };
+const ooggetuige = document.createElement("audio");
+ooggetuige.src = "assets/ooggetuige.mp3";
+ooggetuige.dataset.rank = "ooggetuige";
+
+const finishedBook = document.createElement("audio");
+finishedBook.src = "assets/finishedBook.mp3";
+finishedBook.dataset.rank = "finishedBook";
+
+export { intro, tutorial, chooseBook, savedBooks, books, ooggetuige, finishedBook };
