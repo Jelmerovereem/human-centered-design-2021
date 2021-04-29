@@ -1,4 +1,4 @@
-import startRecording from "./startRecording.js";
+import { startRecording } from "./startRecording.js";
 import checkRank from "./checkRank.js";
 import showChoiceKeys from "./showChoiceKeys.js";
 
@@ -21,13 +21,18 @@ export default function playAudioFile(audioEl) {
 		}
 	}
 	audioEl.play();
+	window.currentAudio = audioEl;
 	showChoiceKeys(rankObj);
 	audioEl.onended = () => {
-		console.log("audio ended a seh")
-		startRecording(rankObj);
+		window.currentAudio = "";
+		if (window.shouldRecord) {
+			startRecording(rankObj);
+		}
 	}
 	audioEl.onpause = () => {
-		console.log("audio paused a seh")
-		startRecording(rankObj)
+		window.currentAudio = "";
+		if (window.shouldRecord) {
+			startRecording(rankObj)
+		}
 	}
 }

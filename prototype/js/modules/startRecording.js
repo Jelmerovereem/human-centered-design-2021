@@ -12,13 +12,11 @@ const feedbackEl = document.querySelector(".feedback");
 
 function checkKey(event, rankObj) {
 	if (event.code === "Enter") {
-		console.log("pressed on enter");
 		const index = rankObj.answers.findIndex(obj => obj.key === "Enter");
 		feedbackEl.textContent = rankObj.answers[index].text;
 		playAudioFile(rankObj.answers[index].next)
 	}
 	if (event.code === "Space") {
-		console.log("pressed on space")
 		const index = rankObj.answers.findIndex(obj => obj.key === "Space");
 		feedbackEl.textContent = rankObj.answers[index].text;
 		playAudioFile(rankObj.answers[index].next);
@@ -34,12 +32,11 @@ function checkKey(event, rankObj) {
 		playAudioFile(rankObj.answers[index].next)
 	}
 	if (event.code === "KeyR") {
-		
 		playAudioFile(rankObj.element);
 	}
 }
 
-export default function startRecording(rankObj) {
+ function startRecording(rankObj) {
 	const recognition = new SpeechRecognition();
 	const speechRecognitionList = new SpeechGrammarList();
 	speechRecognitionList.addFromString(grammarTest, 1);
@@ -64,7 +61,6 @@ export default function startRecording(rankObj) {
 		document.body.classList.add("recording");
 	});
 	recognition.addEventListener("audioend", (event) => {
-		//console.log("recognition stopped")
 		document.body.classList.remove("recording");
 		recognition.stop();
 	})
@@ -98,3 +94,6 @@ export default function startRecording(rankObj) {
 		//feedbackEl.innerHTML = allFeedback;
 	})
 }
+
+
+export { checkKey, startRecording };
