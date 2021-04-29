@@ -1,42 +1,66 @@
-# Human Centered Design @cmda-minor-web · 2020/21
+# AudioBook - Human Centered Design @cmda-minor-web · 2020/21
 
 ## 🔦 **Description**
 
+Voor dit vak ga je een prototype maken speciaal gemaakt voor 1 persoon. Je product wordt tailor-made. Je gaat testen uitvoeren met deze speciale gebruiker, zo kom je er achter wat nou echt de behoeften zijn van deze gebruiker. Hiernaast leer je ook meer over het process van testen en itereren.  
+![Ideate, prototype, user test](readme_assets/design-process.jpg)  
+[Bron](http://deckchair.co.uk/assets/uploads/2018/11/design-process.jpg)
+
 ## 🌐 **Live link**
 
+Live link naar prototype: [https://jelmerovereem.github.io/human-centered-design-2021/prototype/index.html](https://jelmerovereem.github.io/human-centered-design-2021/prototype/index.html)
+
+![live prototype](readme_assets/prototype.jpg)
+
 ## 🚀 **Features**
+- [x] Werkt volledig op spraak
+- [x] Spraak is backed-up met toetscombinaties en buttons
+- [x] Afspelen van audioboeken
+- [x] Zelf opgenomen dus eigen stem
+
+## 📝 **Process**
+Mijn proces met een user scenario, testverslagen en een conclusie staan in de [wiki](https://github.com/Jelmerovereem/human-centered-design-2021/wiki) van deze repository.
 
 ## 📦 **NPM Packages**
 
+There are no NPM Packages! So dependency free :)
+
 ## 💻 **Installation**
 
-### Clone the repository
+### Getting started
+
+This project doesn't use any bundlers or dev servers. I would advice you to install [Browsersync](https://www.npmjs.com/package/browser-sync) to serve the web content in this project. You install Browsersync either through [NPM](https://www.npmjs.com), [Yarn](https://yarnpkg.com) or any other NPM package manager of choice with global installation functionality.
+
+```shell
+$ npm install --global browser-sync || yarn global add browser-sync
+```
+
+### Then proceed to clone this repository.
 
 ```bash
   git clone https://github.com/Jelmerovereem/human-centered-design-2021
 ```
 
-### Navigate to the repository and install the packages
+### Navigate to the project folder
 
 ```bash
-  npm install
+  cd human-centered-design-2021
+  cd prototype
 ```
 
-### Start local dev environment
+### Start server
 
 ```bash
- npm run dev
-```
-
-### Build export for deployment
-
-```bash
- npm run build
+ browser-sync start --server --watch
 ```
 
 ## 🔍 **Sources**
+* MDN. (Apr 20, 2021). SpeechRecognition - Web APIs | MDN. [https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition)
+* van Gemert, V. (n.d.). The Exclusive Design Principles. Vasilis.Nl. https://exclusive-design.vasilis.nl/principles/
+
 
 ## 🔐 **License**
+Dit is een project met een [MIT](https://github.com/Jelmerovereem/human-centered-design-2021/blob/master/LICENSE) licentie. Gemaakt door Jelmer Overeem.
 
 <!-- Here are some hints for your project! -->
 
